@@ -2,11 +2,11 @@ var DubAPI = require('./DubAPI');
 var request = require('request');
 
 var purps = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-var meandmickie = ["tigerpancake", "mclovinthesex"];
+var us = ["me", "you"];
 
 new DubAPI({
-	username: 'cekbot',
-	password: 'mickierocks'
+	username: 'botname',
+	password: 'botpword'
 }, function (err, bot) {
 	if (err) return console.error(err);
 
@@ -57,7 +57,7 @@ new DubAPI({
 						if (!error && response.statusCode == 200) {
 							body = JSON.parse(body);
 							bot.sendChat(body.permalink_url);
-							// Show the HTML for the Google homepage. 
+							// Show the HTML for the Google homepage.
 						}
 					})
 				}
@@ -65,10 +65,10 @@ new DubAPI({
 			if (data.message.toLowerCase() == "!pizza") {
 				setTimeout(function () {
 					var pizzas = ["https://img.pandawhale.com/post-8630-Homer-Simpson-backs-into-peppe-o3R8.gif",
-                        "https://s-media-cache-ak0.pinimg.com/236x/2b/d5/ec/2bd5ec398f08334daea25dbed9b09bbc.jpg",
-                        "http://iruntheinternet.com/lulzdump/images/sounds-delicious-pizza-record-player-LP-vinyl-13583317950.jpg",
-                        "http://funguerilla.com/wp-content/uploads/2010/06/funny-pizza-images17-.jpg",
-                        "https://t3hwin.com/i/2014/12/Pizza-baby.jpg"];
+						"https://s-media-cache-ak0.pinimg.com/236x/2b/d5/ec/2bd5ec398f08334daea25dbed9b09bbc.jpg",
+						"http://iruntheinternet.com/lulzdump/images/sounds-delicious-pizza-record-player-LP-vinyl-13583317950.jpg",
+						"http://funguerilla.com/wp-content/uploads/2010/06/funny-pizza-images17-.jpg",
+						"https://t3hwin.com/i/2014/12/Pizza-baby.jpg"];
 					var pizza = pizzas[Math.floor(Math.random() * pizzas.length)];
 					bot.sendChat(pizza);
 				}, 0);
@@ -179,7 +179,7 @@ new DubAPI({
 			if (data.message.toLowerCase() == "!simps") {
 				setTimeout(function () {
 					var simpses = ["http://media0.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
-                        "http://asset-2.soupcdn.com/asset/13974/2268_2f97.gif"];
+						"http://asset-2.soupcdn.com/asset/13974/2268_2f97.gif"];
 					var simps = simpses[Math.floor(Math.random() * simpses.length)];
 					bot.sendChat(simps);
 				}, 0);
@@ -218,11 +218,6 @@ new DubAPI({
 					var twerks = ["http://www.pride.com/sites/pride.com/files/dance.gif"];
 					var twerk = twerks[Math.floor(Math.random() * twerks.length)];
 					bot.sendChat(twerk);
-				}, 0);
-			}
-			if (data.message.toLowerCase() == '!twitch') {
-				setTimeout(function () {
-					bot.sendChat("/me Purn's Twitch : http://www.twitch.tv/purnceks");
 				}, 0);
 			}
 			if (data.message.toLowerCase() == "!opadd" || data.message.toLowerCase() == "!opsub" ) {
@@ -264,7 +259,7 @@ new DubAPI({
 				setTimeout(function () {
 					var memes = ["http://fistfuloftalent.com/wp-content/uploads/2015/05/no-thank-you-gif.gif",
 						"http://media.tumblr.com/0a967a7fdb105de3cbe5266fa084fdb7/tumblr_inline_mtql5epdaQ1qznfri.gif",
-					"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"];
+						"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"];
 					var post = memes[Math.floor(Math.random() * memes.length)];
 					bot.sendChat(post)
 				}, 0)
@@ -304,7 +299,7 @@ new DubAPI({
 							"gift!")
 				}, 0);
 			}
-			if (data.message.toLowerCase().indexOf("!motd") > -1 && (purps.indexOf(data.user.role) > -1 || data.user.username == "tigerpancake")) {
+			if (data.message.toLowerCase().indexOf("!motd") > -1 && (purps.indexOf(data.user.role) > -1 || data.user.username == "me")) {
 				bot.sendChat("/me MOTD Set!")
 				setInterval(function () {
 					var interval = parseInt(data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(', ') + 1));
@@ -332,14 +327,14 @@ new DubAPI({
 				}, 0)
 			}
 		}
-		if (data.message.toLowerCase() == "!die" && meandmickie.indexOf(data.user.username) > -1) {
+		if (data.message.toLowerCase() == "!die" && us.indexOf(data.user.username) > -1) {
 			setTimeout(function () {
 				bot.sendChat("/me ded :(");
 
 			}, 0);
 			ded = true;
 		}
-		if (data.message.toLowerCase() == "!revive" && meandmickie.indexOf(data.user.username) > -1) {
+		if (data.message.toLowerCase() == "!revive" && us.indexOf(data.user.username) > -1) {
 			setTimeout(function () {
 				bot.sendChat("/me I'm back to work, bitches!");
 
