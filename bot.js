@@ -2,18 +2,18 @@ var DubAPI = require('./DubAPI');
 var request = require('request');
 
 var purps = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-var us = ["tigerpancake", "mclovinthesex"];
+var us = ["me", "you"];
 
 new DubAPI({
-	username: 'cekbot',
-	password: 'mickierocks',
+	username: 'botname',
+	password: 'botpword'
 }, function (err, bot) {
 	if (err) return console.error(err);
 
 	console.log('Running DubAPI v' + bot.version);
 
 	function connect() {
-		bot.connect('bot-test');
+		bot.connect('just-a-chill-room');
 	}
 
 	bot.on('connected', function (name) {
@@ -292,6 +292,17 @@ new DubAPI({
 					bot.sendChat("/me " + "@" +  user + " just sent " + recipient + " " + cookie);
 				}, 0)
 			}
+			if (data.message.toLowerCase().indexOf("!taco") > -1) {
+				setTimeout(function () {
+					var tacos = ['a spicy taco!',
+						'a taco filled with questionable meat, I wouldn\'t touch that.!', 'a scrumptious taco full of ' +
+						'meaty goodness, mmmm' ];
+					var taco = tacos[Math.floor(Math.random() * tacos.length)];
+					var user = data.user.username;
+					var recipient = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
+					bot.sendChat("/me " + "@" +  user + " just sent " + recipient + " " + taco);
+				}, 0)
+			}
 			if (data.message.toLowerCase().indexOf("!sendlove") > -1) {
 				setTimeout(function () {
 					var recipient = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
@@ -299,10 +310,10 @@ new DubAPI({
 							"gift!")
 				}, 0);
 			}
-			var final = "";
-			var motd = "";
 			if (data.message.toLowerCase().indexOf("!motd") > -1 && (purps.indexOf(data.user.role) > -1 || data.user.username == "me")) {
-				bot.sendChat("/me MOTD Set!")
+				var motd = "";
+				var final = "";
+				bot.sendChat("/me MOTD Set!");
 				setInterval(function () {
 					var interval = parseInt(data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(', ') + 1));
 					var times = [];
@@ -312,14 +323,30 @@ new DubAPI({
 					var time = new Date();
 					var m = time.getMinutes();
 					var s = time.getSeconds();
-					if (times.indexOf(m) > -1 && s == 00 ) {
+					if (times.indexOf(m) > -1 && s == 00 ) { //gg
 						setTimeout(function () {
 							motd = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
 							final = motd.substr(0, motd.indexOf(', '));
 							bot.sendChat("/me MOTD: " + final);
 						}, 0)
 					}
-				}, 1000);
+				}, 1000)
+			}
+			if (data.message.toLowerCase().indexOf("!english") >-1 && (purpsvip.indexOf(data.user.role) > -1)) {
+				setTimeout(function () {
+					var recipient = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
+					var languser = recipient.substr(0, recipient.indexOf(', '));
+					var language = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(', ') +1);
+					if (language.trim() == "fr") { //4:49
+						bot.sendChat("/me " + languser + " Parlez anglais s'il vous plait");
+					} else if (language.trim() == "sp") {
+						bot.sendChat("/me " + languser + " Habla en inglés por favor");
+					} else if (language.trim() == "ge") {
+						bot.sendChat("/me " + languser + " Englisch sprechen bitte");
+					} else {
+						bot.sendChat("/me " + languser + " Speak english please");
+					}
+				}, 0);
 			}
 			if (data.message.toLowerCase().indexOf("!define") > -1) {
 				setTimeout(function () {
@@ -347,4 +374,3 @@ new DubAPI({
 
 	connect();
 });
-
