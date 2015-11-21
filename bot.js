@@ -2,18 +2,18 @@ var DubAPI = require('./DubAPI');
 var request = require('request');
 
 var purps = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-var us = ["me", "you"];
+var us = ["tigerpancake", "mclovinthesex"];
 
 new DubAPI({
-	username: 'botname',
-	password: 'botpword'
+	username: 'cekbot',
+	password: 'mickierocks',
 }, function (err, bot) {
 	if (err) return console.error(err);
 
 	console.log('Running DubAPI v' + bot.version);
 
 	function connect() {
-		bot.connect('just-a-chill-room');
+		bot.connect('bot-test');
 	}
 
 	bot.on('connected', function (name) {
@@ -299,6 +299,8 @@ new DubAPI({
 							"gift!")
 				}, 0);
 			}
+			var final = "";
+			var motd = "";
 			if (data.message.toLowerCase().indexOf("!motd") > -1 && (purps.indexOf(data.user.role) > -1 || data.user.username == "me")) {
 				bot.sendChat("/me MOTD Set!")
 				setInterval(function () {
@@ -310,15 +312,14 @@ new DubAPI({
 					var time = new Date();
 					var m = time.getMinutes();
 					var s = time.getSeconds();
-					if (times.indexOf(m) > -1 && s == 00 ) { //gg
+					if (times.indexOf(m) > -1 && s == 00 ) {
 						setTimeout(function () {
-							var motd = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
-							var final = motd.substr(0, motd.indexOf(', '));
+							motd = data.message.toLowerCase().substr(data.message.toLowerCase().indexOf(' ') + 1);
+							final = motd.substr(0, motd.indexOf(', '));
 							bot.sendChat("/me MOTD: " + final);
 						}, 0)
 					}
-				}, 1000)
-
+				}, 1000);
 			}
 			if (data.message.toLowerCase().indexOf("!define") > -1) {
 				setTimeout(function () {
