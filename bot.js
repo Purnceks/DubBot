@@ -2,7 +2,7 @@ var DubAPI = require('./DubAPI');
 var request = require('request');
 
 var purps = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-var us = ["me", "you"];
+var us = ["me", "you", "the other guy"];
 
 new DubAPI({
 	username: 'botname',
