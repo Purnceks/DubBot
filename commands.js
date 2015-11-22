@@ -41,7 +41,7 @@ module.exports = {
 		self = this;
 		var user = data.user.username;
 		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
-			if (data.params.length = 1) {
+			if (data.params.length === 1) {
 				term = data.params[0];
 				request('http://api.urbandictionary.com/v0/define?term=' + term, function (error, response, body) {
 					if (!error && response.statusCode === 200) {
@@ -71,18 +71,13 @@ module.exports = {
 			} else {
 				term = data.params.join("+");
 				request('http://api.urbandictionary.com/v0/define?term=' + term, function (error, response, body) {
+					var body = JSON.parse(body);
 					if (body.result_type !== "no_results") {
 						var definition = body.list[0].definition;
 						slicer = 255 - (self.identifier.length + term.length + " definition: ".length);
-						if (definition.length <= slicer) {
+						if (definition.length <= (510 - slicer)) {
 							self.sendChat(self.identifier + term + " definition: " + definition);
-						} else if (definition.length <= 510 - slicer) {
-							defP1 = definition.slice(0, slicer);
-							defP2 = definition.slice(splicer, definition.length);
-							self.sendChat(self.identifier + term + " definition: " + defP1);
-							setTimeout(function () {
-								self.sendChat(defP2);
-							}, 250);
+
 						} else {
 							self.sendChat(self.identifier + " sorry the definition for " + term + " is too long to be shown");
 						}
