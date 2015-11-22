@@ -105,7 +105,7 @@ module.exports = {
 					bot.sendChat(bot.identifier + "@" + user + " you need to @[username] to send them love")
 				}
 			} else {
-				bot.sendChat(bot.identifier + "@" + user " you can only send a love to one person at a time you whore you");
+				bot.sendChat(bot.identifier + "@" + user + " you can only send a love to one person at a time you whore you");
 			}
 		} else {
 			bot.sendChat(bot.identifier + "@" + user + " just sent me love. aww what a cutie");
