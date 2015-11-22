@@ -68,7 +68,7 @@ module.exports = {
 						var definition = body.list[0].definition;
 						slicer = 255 - (self.identifier.length + term.length + " definition: ".length);
 						if (definition.length <= (510 - slicer)) {
-							self.sendChat(self.identifier + term + " definition: " + definition);
+							self.sendChat(self.identifier + data.params + " definition: " + definition); // cause none wants dat +
 
 						} else {
 							self.sendChat(self.identifier + " sorry the definition for " + term + " is too long to be shown");
