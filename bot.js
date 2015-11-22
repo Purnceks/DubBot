@@ -27,12 +27,14 @@ new DubAPI({
 	bot.on('error', function (err) {
 		console.error(err);
 	});
-
-	bot.on(bot.events.chatMessage, function (data) {
-		//console.log(data);
-		//thanks console.log(Date(data.raw.user.created) + ": " + data.user.username + ': ' + data.message);
-	});
 	var ded = false;
+	// purps array has now become bot.ranks array, so that it is easier to use within the commands
+	bot.ranks = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
+	//us array has now become bot.staff, so that it is easier to use within the commands
+	bot.staff = ["list", "of", "staff", "usernames"];
+	//chat handler
+	//added songCount to keep a record of the amount of songs been played
+	bot.songCount = 0;
 	//added a bot identifier to the bot to be sent along with the bot responses. added it here so it's easy to change if needed
 	//make sure to add a space at the end so we don't need to include it all the time like bot.idenifier + " " + "this text"
 	bot.identifier = ":grey_exclamation: ";
@@ -40,11 +42,14 @@ new DubAPI({
 	bot.motd = "";
 	//added motdInterval to the bot so that it can have a default setting, so that no interval param is needed
 	bot.motdInterval = 60;
-	// purps array has now become bot.ranks array, so that it is easier to use within the commands
-	bot.ranks = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-	//us array has now become bot.staff, so that it is easier to use within the commands
-	bot.staff = ["list", "of", "staff", "usernames"];
-	//chat handler
+	//function to send MOTD based off the number of songs played
+	bot.sendMotd = function () {
+		if (bot.motdEnabled) {
+			if (bot.songCount % bot.motdInterval === 0) {
+				bot.sendChat(bot.identifier + bot.motd);
+			}
+		}
+	};
 	bot.on('chat-message', function (data) {
 		var cmd = data.message,
 			//split the whole message words into tokens
@@ -75,6 +80,9 @@ new DubAPI({
 			}
 		});
 	});
-
+	bot.on('room_playlist-update', function (data) {
+		bot.songCount++;
+		bot.sendMotd();
+	});
 	connect();
 });

@@ -289,10 +289,12 @@ module.exports = {
 						if (firstParam === "set") {
 							var motd = data.params.slice(1).join(" ");
 							self.motd = motd;
+							self.motdEnabled = true;
 							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd);
 							//if it doesn't join the params together to set the motd
 						} else {
 							self.motd = data.params.join(" ");
+							self.motdEnabled = true;
 							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd);
 						}
 						//if the first param is a number
@@ -304,13 +306,15 @@ module.exports = {
 							var motd = data.params.slice(2).join(" ");
 							self.motdInterval = parseInt(firstParam);
 							self.motd = motd;
-							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd + " with interval of: " + self.motdInterval + " minutes");
+							self.motdEnabled = true;
+							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd + " with interval of: " + self.motdInterval + " songs");
 							//if it doesn't, just remove the interval from the params, then join them together to set the motd
 						} else {
 							var motd = data.params.slice(1).join(" ");
 							self.motdInterval = parseInt(firstParam);
 							self.motd = motd;
-							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd + " with interval of: " + self.motdInterval + " minutes");
+							self.motdEnabled = true;
+							self.sendChat(self.identifier + "MOTD has been set to: " + self.motd + " with interval of: " + self.motdInterval + " songs");
 						}
 					}
 					//if the params is one
@@ -320,10 +324,16 @@ module.exports = {
 						self.sendChat(self.identifier + "to set MOTD do: !motd [interval] set [motd message]");
 						//checks to see if the only param is a number
 					} else if (!isNaN(parseInt(data.params[0]))) {
-						self.sendChat(self.identifier + "to set MOTD do: !motd [interval] set [motd message]");
+						self.motdInterval = data.params[0];
+						self.sendChat(self.identifier + "MOTD interval changed to " + self.motdInterval + " songs");
+					} else if (data.params[0] === "clear") {
+						self.motd = "";
+						self.motdEnabled = false;
+						self.sendChat(self.identifier = "MOTD cleared");
 					} else {
 						//single word motd (for that odd occasion when we might have just one word. who knows)
 						self.motd = data.params[0];
+						self.motdEnabled = true;
 						self.sendChat(self.identifier + "MOTD has been set to: " + self.motd);
 					}
 				}
