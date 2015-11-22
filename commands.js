@@ -68,10 +68,10 @@ module.exports = {
 						var definition = body.list[0].definition;
 						slicer = 255 - (self.identifier.length + term.length + " definition: ".length);
 						if (definition.length <= (510 - slicer)) {
-							self.sendChat(self.identifier + data.params.join(" ") + " definition: " + definition); // cause none wants dat +
+							self.sendChat(self.identifier + data.params.join(" ") + "definition: " + definition); // cause none wants dat +
 
 						} else {
-							self.sendChat(self.identifier + " sorry the definition for " + data.params.join(" ") + " is too long to be shown"); // oh should be here too.
+							self.sendChat(self.identifier + " sorry the definition for " + data.params.join(" ") + "is too long to be shown"); // oh should be here too.
 						}
 					} else {
 						self.sendChat(self.identifier + "something went wrong with the Urban Dictionary API");
