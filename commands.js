@@ -403,7 +403,7 @@ module.exports = {
 					query = query.join('+');
 					request("http://api.worldweatheronline.com/free/v2/weather.ashx?key=" + api_key + "&q=" + query + "&format=json&showlocaltime=yes", function (error, response, body) {
 						var body = JSON.parse(body);
-						if (typeof (body.error === "undefined")) {
+						if (typeof (body.data.error !== "undefined")) {
 							var location = body.data.request[0].query;
 							var currentTime = body.data.time_zone[0].localtime.slice(11);
 							self.sendChat(self.identifier + "@" + user + " current time in " + location + " is " + currentTime);
