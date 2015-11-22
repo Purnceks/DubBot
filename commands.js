@@ -84,7 +84,7 @@ module.exports = {
 		self = this;
 		var user = data.user.username;
 		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
-			if (data.params.length = 1) {
+			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
 					self.sendChat(self.identifier + "@" + user + " just sent " + recipient + " love... What a worthless gift!");
@@ -101,15 +101,15 @@ module.exports = {
 	taco: function (data) {
 		self = this;
 		var tacos = [
-				'a spicy taco!',
-				'a taco filled with questionable meat, I wouldn\'t touch that.!',
-				'a scrumptious taco full of ' +
-				'meaty goodness, mmmm'
-			];
+			'a spicy taco!',
+			'a taco filled with questionable meat, I wouldn\'t touch that.!',
+			'a scrumptious taco full of ' +
+			'meaty goodness, mmmm'
+		];
 		var taco = tacos[Math.floor(Math.random() * tacos.length)];
 		var user = data.user.username;
 		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
-			if (data.params.length = 1) {
+			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
 					self.sendChat(self.identifier + "@" + user + " just sent " + recipient + " " + taco);
@@ -126,31 +126,31 @@ module.exports = {
 	cookie: function (data) {
 		self = this;
 		var cookies = [
-				'a chocolate chip cookie!',
-				'a soft homemade oatmeal cookie!',
-				'a plain, dry, old cookie. It was the last one in the bag. Gross.',
-				'a sugar cookie. What, no frosting and sprinkles? 0/10 would not touch.',
-				'a chocolate chip cookie. Oh wait, those are raisins. Bleck!',
-				'an enormous cookie. Poking it gives you more cookies. Weird.',
-				'a fortune cookie. It reads "Why aren\'t you working on any projects?"',
-				'a fortune cookie. It reads "Give that special someone a compliment"',
-				'a fortune cookie. It reads "Take a risk!"',
-				'a fortune cookie. It reads "Go outside."',
-				'a fortune cookie. It reads "Don\'t forget to eat your veggies!"',
-				'a fortune cookie. It reads "Do you even lift?"',
-				'a fortune cookie. It reads "m808 pls"',
-				'a fortune cookie. It reads "If you move your hips, you\'ll get all the ladies."',
-				'a fortune cookie. It reads "I love you."',
-				'a Golden Cookie. You can\'t eat it because it is made of gold. Dammit.',
-				'an Oreo cookie with a glass of milk!',
-				'a rainbow cookie made with love :heart:',
-				'an old cookie that was left out in the rain, it\'s moldy.',
-				'freshly baked cookies, they smell amazing.'
-			];
+			'a chocolate chip cookie!',
+			'a soft homemade oatmeal cookie!',
+			'a plain, dry, old cookie. It was the last one in the bag. Gross.',
+			'a sugar cookie. What, no frosting and sprinkles? 0/10 would not touch.',
+			'a chocolate chip cookie. Oh wait, those are raisins. Bleck!',
+			'an enormous cookie. Poking it gives you more cookies. Weird.',
+			'a fortune cookie. It reads "Why aren\'t you working on any projects?"',
+			'a fortune cookie. It reads "Give that special someone a compliment"',
+			'a fortune cookie. It reads "Take a risk!"',
+			'a fortune cookie. It reads "Go outside."',
+			'a fortune cookie. It reads "Don\'t forget to eat your veggies!"',
+			'a fortune cookie. It reads "Do you even lift?"',
+			'a fortune cookie. It reads "m808 pls"',
+			'a fortune cookie. It reads "If you move your hips, you\'ll get all the ladies."',
+			'a fortune cookie. It reads "I love you."',
+			'a Golden Cookie. You can\'t eat it because it is made of gold. Dammit.',
+			'an Oreo cookie with a glass of milk!',
+			'a rainbow cookie made with love :heart:',
+			'an old cookie that was left out in the rain, it\'s moldy.',
+			'freshly baked cookies, they smell amazing.'
+		];
 		var cookie = cookies[Math.floor(Math.random() * cookies.length)];
 		var user = data.user.username;
 		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
-			if (data.params.length = 1) {
+			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
 					self.sendChat(self.identifier + "@" + user + " just sent " + recipient + " " + cookie);
@@ -167,40 +167,40 @@ module.exports = {
 	yogapants: function (data) {
 		self = this;
 		var memes = [
-					"http://fistfuloftalent.com/wp-content/uploads/2015/05/no-thank-you-gif.gif",
-					"http://media.tumblr.com/0a967a7fdb105de3cbe5266fa084fdb7/tumblr_inline_mtql5epdaQ1qznfri.gif",
-					"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"
-				];
+			"http://fistfuloftalent.com/wp-content/uploads/2015/05/no-thank-you-gif.gif",
+			"http://media.tumblr.com/0a967a7fdb105de3cbe5266fa084fdb7/tumblr_inline_mtql5epdaQ1qznfri.gif",
+			"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"
+		];
 		var post = memes[Math.floor(Math.random() * memes.length)];
 		self.sendChat(self.identifier + post);
 	},
 	no: function (data) {
 		self = this;
 		var memes = [
-					"http://fistfuloftalent.com/wp-content/uploads/2015/05/no-thank-you-gif.gif",
-					"http://media.tumblr.com/0a967a7fdb105de3cbe5266fa084fdb7/tumblr_inline_mtql5epdaQ1qznfri.gif",
-					"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"
-			];
+			"http://fistfuloftalent.com/wp-content/uploads/2015/05/no-thank-you-gif.gif",
+			"http://media.tumblr.com/0a967a7fdb105de3cbe5266fa084fdb7/tumblr_inline_mtql5epdaQ1qznfri.gif",
+			"http://assets0.ordienetworks.com/images/GifGuide/michael_scott/The-Office-gifs-the-office-14948948-240-196.gif"
+		];
 		var post = memes[Math.floor(Math.random() * memes.length)];
 		self.sendChat(self.identifier + post);
 	},
 	nitroghost: function (data) {
 		self = this;
 		var ghosts = [
-				"http://www.clipartlord.com/wp-content/uploads/2013/11/ghost11.png",
-				"https://eb9239d2b3c1bda1d53d-6b4eb896915f5ae433f1eefb2b932a4d.ssl.cf1.rackcdn.com/19304nos.jpg"
-			];
+			"http://www.clipartlord.com/wp-content/uploads/2013/11/ghost11.png",
+			"https://eb9239d2b3c1bda1d53d-6b4eb896915f5ae433f1eefb2b932a4d.ssl.cf1.rackcdn.com/19304nos.jpg"
+		];
 		var nitroghost = ghosts[Math.floor(Math.random() * ghosts.length)];
 		self.sendChat(self.identifier + nitroghost);
 	},
 	bunneh: function (data) {
 		self = this;
 		var bunnehs = [
-				"http://cdn.earthporm.com/wp-content/uploads/2014/07/cute-bunnies-tongues-6.jpg",
-				"http://viralpirate.com/wp-content/uploads/2015/09/Happy_bunny_Wallpaper_btzqo.jpg",
-				"http://i.imgur.com/5nGWQWK.jpg",
-				"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Wild_rabbit_us.jpg/1280px-Wild_rabbit_us.jpg"
-			];
+			"http://cdn.earthporm.com/wp-content/uploads/2014/07/cute-bunnies-tongues-6.jpg",
+			"http://viralpirate.com/wp-content/uploads/2015/09/Happy_bunny_Wallpaper_btzqo.jpg",
+			"http://i.imgur.com/5nGWQWK.jpg",
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Wild_rabbit_us.jpg/1280px-Wild_rabbit_us.jpg"
+		];
 		var bunneh = bunnehs[Math.floor(Math.random() * bunnehs.length)];
 		self.sendChat(self.identifier + bunneh);
 	},
@@ -213,28 +213,28 @@ module.exports = {
 	twerk: function (data) {
 		self = this;
 		var twerks = [
-				"http://www.pride.com/sites/pride.com/files/dance.gif"
-			];
+			"http://www.pride.com/sites/pride.com/files/dance.gif"
+		];
 		var twerk = twerks[Math.floor(Math.random() * twerks.length)];
 		self.sendChat(self.identifier + twerk);
 	},
 	simps: function (data) {
 		self = this;
 		var simpses = [
-				"http://media0.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
-				"http://asset-2.soupcdn.com/asset/13974/2268_2f97.gif",
-			];
+			"http://media0.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
+			"http://asset-2.soupcdn.com/asset/13974/2268_2f97.gif",
+		];
 		var simps = simpses[Math.floor(Math.random() * simpses.length)];
 		self.sendChat(self.identifier + simps);
 	},
 	joke: function (data) {
 		self = this;
 		var jokes = [
-				"Why was Pavlov's hair so soft? Classical conditioning!",
-				"Did you hear about the two lawyers who set up shop under the old oak tree? I heard it was a pretty shady business.",
-				"How many tickles does it take to make an octopus giggle? Ten tickles!",
-				"http://i.imgur.com/eesajrE.jpg", "http://i.imgur.com/G8kf7HS.jpg"
-			];
+			"Why was Pavlov's hair so soft? Classical conditioning!",
+			"Did you hear about the two lawyers who set up shop under the old oak tree? I heard it was a pretty shady business.",
+			"How many tickles does it take to make an octopus giggle? Ten tickles!",
+			"http://i.imgur.com/eesajrE.jpg", "http://i.imgur.com/G8kf7HS.jpg"
+		];
 		var joke = jokes[Math.floor(Math.random() * jokes.length)];
 		self.sendChat(self.identifier + joke);
 	},
