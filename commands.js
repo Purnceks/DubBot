@@ -142,7 +142,7 @@ module.exports = {
 				'a plain, dry, old cookie. It was the last one in the bag. Gross.',
 				'a sugar cookie. What, no frosting and sprinkles? 0/10 would not touch.',
 				'a chocolate chip cookie. Oh wait, those are raisins. Bleck!',
-				'gives you an enormous cookie. Poking it gives you more cookies. Weird.',
+				'an enormous cookie. Poking it gives you more cookies. Weird.',
 				'a fortune cookie. It reads "Why aren\'t you working on any projects?"',
 				'a fortune cookie. It reads "Give that special someone a compliment"',
 				'a fortune cookie. It reads "Take a risk!"',
