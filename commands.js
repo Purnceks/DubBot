@@ -71,7 +71,7 @@ module.exports = {
 							self.sendChat(self.identifier + data.params + " definition: " + definition); // cause none wants dat +
 
 						} else {
-							self.sendChat(self.identifier + " sorry the definition for " + term + " is too long to be shown");
+							self.sendChat(self.identifier + " sorry the definition for " + data.params + " is too long to be shown"); // oh should be here too.
 						}
 					} else {
 						self.sendChat(self.identifier + "something went wrong with the Urban Dictionary API");
