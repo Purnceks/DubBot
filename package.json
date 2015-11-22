@@ -6,8 +6,10 @@
   "author": "anjanms",
   "dependencies": {
     "deep-assign": "^1.0.0",
+    "htmlparser": "^1.7.7",
     "pubnub": "^3.7.14",
-    "request": "^2.64.0"
+    "request": "^2.64.0",
+    "soupselect": "^0.2.0"
   },
   "engines": {
     "node": ">= 0.10.0"

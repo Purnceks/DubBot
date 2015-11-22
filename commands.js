@@ -1,4 +1,6 @@
 var request = require('request');
+var Select = require("soupselect").select;
+var HtmlParser = require("htmlparser");
 
 module.exports = {
 	//string bot responses
@@ -333,6 +335,40 @@ module.exports = {
 					//if set previously, say what the motd is currently
 				} else {
 					self.sendChat(self.identifier + self.motd);
+				}
+			}
+		}
+	},
+	dialect: function (data) {
+		var self = this;
+		var dialects = ["redneck", "jive", "cockney", "fudd", "bork", "moron", "piglatin", "hckr", "censor"];
+		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+			if (data.params.length === 1) {
+				if (data.params[0] === ("help" || "h")) {
+					self.sendChat(self.identifier + "dialects: " + dialects.join(", "));
+				} else {
+					self.sendChat(self.identifier + "to use do: !dialect [dialect] [message]");
+				}
+			} else {
+				if (data.params[0] === ("hacker" || "hax" || "haxor")) {
+					data.params[0] = "hckr";
+				}
+				if (dialects.indexOf(data.params[0]) > -1) {
+					var dialect = data.params[0];
+					var text = data.params.slice(1).join(" ").trim();
+					request("http://www.rinkworks.com/dialect/dialectt.cgi?dialect=" + encodeURIComponent(dialect) + "&text=" + encodeURIComponent(text), function (error, response, body) {
+						var handler = new HtmlParser.DefaultHandler();
+						var parser = new HtmlParser.Parser(handler);
+						parser.parseComplete(body);
+						var result = Select(handler.dom, ".dialectized_text p");
+						if (!result) {
+							return;
+						}
+						var dialectizedText = result[0].children[0].raw;
+						self.sendChat(self.identifier + dialectizedText.trim());
+					});
+				} else {
+					self.sendChat(self.identifier + "to use do: !dialect [dialect] [message]");
 				}
 			}
 		}
