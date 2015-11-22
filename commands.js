@@ -44,25 +44,15 @@ module.exports = {
 			if (data.params.length === 1) {
 				term = data.params[0];
 				request('http://api.urbandictionary.com/v0/define?term=' + term, function (error, response, body) {
-					if (!error && response.statusCode === 200) {
-						var body = JSON.parse(body);
-						if (body.result_type !== "no_results") {
-							var definition = body.list[0].definition;
-							slicer = 255 - (self.identifier.length + term.length + " definition: ".length);
-							if (definition.length <= slicer) {
-								self.sendChat(self.identifier + term + " definition: " + definition);
-							} else if (definition.length <= 510 - slicer) {
-								defP1 = definition.slice(0, slicer);
-								defP2 = definition.slice(splicer, definition.length);
-								self.sendChat(self.identifier + term + " definition: " + defP1);
-								setTimeout(function () {
-									self.sendChat(defP2);
-								}, 250);
-							} else {
-								self.sendChat(self.identifier + " sorry the definition for " + term + " is too long to be shown");
-							}
+					var body = JSON.parse(body);
+					if (body.result_type !== "no_results") {
+						var definition = body.list[0].definition;
+						slicer = 255 - (self.identifier.length + term.length + " definition: ".length);
+						if (definition.length <= (510 - slicer)) {
+							self.sendChat(self.identifier + term + " definition: " + definition);
+
 						} else {
-							self.sendChat(self.identifier + "sorry, no definition found for: " + term);
+							self.sendChat(self.identifier + " sorry the definition for " + term + " is too long to be shown");
 						}
 					} else {
 						self.sendChat(self.identifier + "something went wrong with the Urban Dictionary API");
@@ -116,7 +106,7 @@ module.exports = {
 				'a scrumptious taco full of ' +
 				'meaty goodness, mmmm'
 			];
-		var taco = tacos[Math.floor(Math.random() * cookies.length)];
+		var taco = tacos[Math.floor(Math.random() * tacos.length)];
 		var user = data.user.username;
 		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
 			if (data.params.length = 1) {
