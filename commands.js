@@ -42,7 +42,7 @@ module.exports = {
 	define: function (data) {
 		self = this;
 		var user = data.user.username;
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1) {
 				term = data.params[0];
 				request('http://api.urbandictionary.com/v0/define?term=' + term, function (error, response, body) {
@@ -85,7 +85,7 @@ module.exports = {
 	sendlove: function (data) {
 		self = this;
 		var user = data.user.username;
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
@@ -110,7 +110,7 @@ module.exports = {
 		];
 		var taco = tacos[Math.floor(Math.random() * tacos.length)];
 		var user = data.user.username;
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
@@ -151,7 +151,7 @@ module.exports = {
 		];
 		var cookie = cookies[Math.floor(Math.random() * cookies.length)];
 		var user = data.user.username;
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1) {
 				if (data.params[0].substr(0, 1) === '@') {
 					recipient = data.params[0];
@@ -278,7 +278,7 @@ module.exports = {
 		//if the user has name in the self.staff array, or their role is one from self.rank
 		if (self.staff.indexOf(user) > -1 || self.ranks.indexOf(rank) > -1) {
 			//checks to make sure there's params set
-			if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+			if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 				//makes sure that there's more than one param (as motd can have two params, as well as the motd)
 				if (data.params.length > 1) {
 					firstParam = data.params[0];
@@ -357,7 +357,7 @@ module.exports = {
 	dialect: function (data) {
 		var self = this;
 		var dialects = ["redneck", "jive", "cockney", "fudd", "bork", "moron", "piglatin", "hckr", "censor"];
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1) {
 				if (data.params[0] === ("help" || "h")) {
 					self.sendChat(self.identifier + "dialects: " + dialects.join(", "));
@@ -391,7 +391,7 @@ module.exports = {
 	time: function (data) {
 		var self = this;
 		var user = data.user.username;
-		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+		if (typeof (data.params) !== 'undefined' && data.params.length > 0) {
 			if (data.params.length === 1 && data.params[0] === ("help" || "h")) {
 				self.sendChat(self.identifier + "you can check the time of any town, city anywhere in the world by doing: !time [in | is it in | for] [location]. You may want to be specific with locations like: \"London, Canada\" for best results");
 			} else {
