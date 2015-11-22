@@ -373,6 +373,33 @@ module.exports = {
 			}
 		}
 	},
+	time: function (data) {
+		var self = this;
+		var user = data.user.username;
+		if (typeof (data.params) != 'undefined' && data.params.length > 0) {
+			if (data.params.length === 1 && data.params[0] === ("help" || "h")) {
+				self.sendChat(self.identifier + "you can check the time of any town, city anywhere in the world by doing: !time [in | is it in | for] [location]. You may want to be specific with locations like: \"London, Canada\" for best results");
+			} else {
+				text = data.params.join(" ");
+				if (/(in|is it in|for) (.*)/i.test(text)) {
+					var api_key = "35622561bbfda562f2debf295b9fc";
+					var query = data.message.match(/(in|is it in|for) (.*)/i)[2];
+					query = query.split(' ');
+					query = query.join('+');
+					request("http://api.worldweatheronline.com/free/v2/weather.ashx?key=" + api_key + "&q=" + query + "&format=json&showlocaltime=yes", function (error, response, body) {
+						var body = JSON.parse(body);
+						if (typeof (body.error === "undefined")) {
+							var location = body.data.request[0].query;
+							var currentTime = body.data.time_zone[0].localtime.slice(11);
+							self.sendChat(self.identifier + "@" + user + " current time in " + location + " is " + currentTime);
+						} else {
+							self.sendChat(self.identifier + "@" + user + " sorry, no location found");
+						}
+					});
+				}
+			}
+		}
+	},
 	//TODO/complete:
 	/*
 	die: function (data) {
