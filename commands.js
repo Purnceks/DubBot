@@ -417,6 +417,7 @@ module.exports = {
 	},
 	//TODO/complete:
 	/*
+	I really should do this shit but lazy
 	die: function (data) {
 	
 	},
