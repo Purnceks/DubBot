@@ -1,6 +1,6 @@
 var DubAPI = require('./DubAPI');
 var request = require('request');
-var commands = request('./commands');
+var commands = require('./commands');
 
 new DubAPI({
 	username: 'botname',
