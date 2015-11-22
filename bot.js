@@ -1,8 +1,6 @@
 var DubAPI = require('./DubAPI');
 var request = require('request');
 var commands = request('./commands');
-var purps = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
-var us = ["me", "you", "the other guy"];
 
 new DubAPI({
 	username: 'botname',
@@ -42,6 +40,11 @@ new DubAPI({
 	bot.motd = "";
 	//added motdInterval to the bot so that it can have a default setting, so that no interval param is needed
 	bot.motdInterval = 60;
+	// purps array has now become bot.ranks array, so that it is easier to use within the commands
+	bot.ranks = ["5615fa9ae596154a5c000000", "5615fd84e596150061000003", "52d1ce33c38a06510c000001"];
+	//us array has now become bot.staff, so that it is easier to use within the commands
+	bot.staff = ["list", "of", "staff", "usernames"];
+	//chat handler
 	bot.on('chat-message', function (data) {
 		var cmd = data.message,
 			//split the whole message words into tokens
@@ -65,12 +68,13 @@ new DubAPI({
 						bot.sendChat(bot.identifier + commands[data.trigger]);
 						break;
 					case 'function':
-						//little trick to give the commands the bot to use its functions and the data from the chat
+						//little trick to give the commands the bot to use its functions and also the data from the chat
 						commands[data.trigger].apply(bot, [data]);
 						break;
 				}
 			}
 		});
 	});
+
 	connect();
 });
