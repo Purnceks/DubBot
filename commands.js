@@ -322,14 +322,19 @@ module.exports = {
 					//checks to see if the only param is set
 					if (data.params[0] === "set") {
 						self.sendChat(self.identifier + "to set MOTD do: !motd [interval] set [motd message]");
-						//checks to see if the only param is a number
+						//checks to se if the only param is interval, to see the current interval set
+					} else if (data.params[0] === "interval") {
+						self.sendChat(self.identifier + "MOTD interval is currently set to:" + self.motdInterval + " songs");
+						//checks to see if the only param is a number	
 					} else if (!isNaN(parseInt(data.params[0]))) {
 						self.motdInterval = data.params[0];
 						self.sendChat(self.identifier + "MOTD interval changed to " + self.motdInterval + " songs");
+						//checks to see if the only param is clear, to remove the MOTD
 					} else if (data.params[0] === "clear") {
 						self.motd = "";
 						self.motdEnabled = false;
 						self.sendChat(self.identifier = "MOTD cleared");
+
 					} else {
 						//single word motd (for that odd occasion when we might have just one word. who knows)
 						self.motd = data.params[0];
