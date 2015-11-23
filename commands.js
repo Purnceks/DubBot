@@ -354,6 +354,16 @@ module.exports = {
 			}
 		}
 	},
+	restart: function (data) {
+		self = this;
+		var user = data.user.username;
+		var rank = data.user.role;
+		//if the user has name in the self.staff array, or their role is one from self.rank
+		if (self.staff.indexOf(user) > -1 || self.ranks.indexOf(rank) > -1) {
+			self.sendChat(self.identifier + "restarting, brb");
+			console.log("r3st4rt");
+		}
+	},
 	dialect: function (data) {
 		var self = this;
 		var dialects = ["redneck", "jive", "cockney", "fudd", "bork", "moron", "piglatin", "hckr", "censor"];

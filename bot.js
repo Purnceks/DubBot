@@ -15,6 +15,7 @@ new DubAPI({
 	}
 
 	bot.on('connected', function (name) {
+		bot.sendChat(bot.identifier + "online");
 		console.log('Connected to ' + name);
 	});
 
